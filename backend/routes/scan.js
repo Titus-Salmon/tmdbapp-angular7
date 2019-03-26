@@ -9,6 +9,14 @@ var router = express.Router();
   });
 });*/
 
+
+router.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PATCH, PUT, DELETE, METHODS');
+  next();
+});
+
 router.get('/', function (req, res, next) {
   res.send('scan.js on port 3000 listening for POST req to /results  from port 4200');
 });

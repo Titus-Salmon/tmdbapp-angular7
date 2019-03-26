@@ -19,74 +19,9 @@ export class ScanComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit() {
-    this.filtersConfig = {
-      //base_path: "Tablefilter-master/dist/tablefilter/",
-      paging: {
-        length: 20,
-        results_per_page: ["Results per page ", [20, 25, 30, 35, 40, 45, 50]]
-      },
-      grid_layout: true,
-      alternate_rows: false,
-      btn_reset: true,
-      rows_counter: true,
-      rows_counter_text: "Displayed rows: ",
-      loader: true,
-      status_bar: true,
-      //remember_page_number: true,
-      //remember_page_length: false,
-      col_types: [
-        "string",
-        "string",
-        "string",
-        "string",
-        "string",
-        "string",
-        "string"
-      ],
-      extensions: [
-        {
-          name: "sort"
-        }
-      ]
-      //enable_slc_reset_filter: false
-    };
+  ngOnInit() {}
 
-    //this.tf = new TableFilter('resultsTable', this.filtersConfig);
-  }
-
-  /*function clearTable() {
-    tf.clearFilters(); //needed to reset the bottom pagination fields ('Rows', 'Page', and 'Results per page'),
-    //otherwise they don't update correctly (tablefilter method)
-    if (document.getElementById("resultsTableBody").rows.length > 0) {
-        //if table has any data in it
-        tf.destroy(); //1st, destroy tablefilter table (tablefilter method)
-        if (document.getElementById("resultsTableBody").rows[0].cells.length > 0) {
-            //clear the table (not connected to tablefilter)
-            var tableBody = document.getElementById("resultsTableBody");
-            tableBody.innerHTML = "";
-        }
-    }
-    console.log('(document.getElementById("resultsTableBody").rows.length_inside_clearTable ~~~~~~~> ');
-    console.log((document.getElementById("resultsTableBody").rows.length));
-}
-/**************************************************************************************************/
-  /*deleteFirstRow is needed because tablefilter's grid-layout option kept inserting additional empty
-row upon consecutive searches*/
-  /*function deleteFirstRow() {
-    if (document.getElementById("resultsTableBody").rows.length > 0) {
-        document.getElementById("resultsTableBody").deleteRow(0);
-    }
-}
-/**************************************************************************************************/
-  //function clearCaption() {
-  //   document.getElementById("resultsTable").deleteCaption(); //clears table caption on click, otherwise caption gets duplicated
-  //}
   showScanResults() {
-    //tf.destroy();
-    //tf.init();
-    //clearTable();
-    //deleteFirstRow();
     this.soc = (<HTMLInputElement>(
       document.getElementById("social-security")
     )).value;
@@ -105,10 +40,6 @@ row upon consecutive searches*/
     this.ajaxCall = new XMLHttpRequest();
     this.ajaxCall.onreadystatechange = function() {
       if (this.readyState == 4 && this.status == 200) {
-        //tf.destroy();
-        //tf.clearFilters();
-        //tf.init();
-        //tf.destroy();
         console.log("ajaxCall.responseText = ");
         console.log(this.responseText);
         var jsonParsedData = this.responseText;
@@ -160,45 +91,13 @@ row upon consecutive searches*/
             cellAppDate.innerHTML = appDate_entry;
           });
         });
-        /*******tablefilter.js*************************************************************/
-        //tf.init(); //tf.init() must be down here, otherwise if it is up with the rest of the tablefilter.js script,
-        //search results keep duplicating table components when clicking 'search' button
-        /*******tablefilter.js*************************************************************/
+
         var ResultsTableBody = document.getElementById("resultsTableBody");
         console.log("ResultsTableBody = ");
         console.log(ResultsTableBody);
         console.log("ResultsTableBody[0] = ");
         console.log(ResultsTableBody[0]);
         var tbl = <HTMLTableElement>document.getElementById("resultsTable");
-        // var filterRow = tbl.childNodes[2].childNodes[1];
-        //console.log("tbl = ");
-        //console.log(tbl);
-        //if (tbl.childNodes[2].childNodes.length > 4) {
-        //if there is more than 1 <tr class="fltrow"></tr>
-        //tbl.childNodes[2].removeChild(filterRow); //delete it
-        //}
-        /* console.log("tbl.childNodes = ");
-        console.log(tbl.childNodes);
-        console.log("tbl.childNodes[2].childNodes = ");
-        console.log(tbl.childNodes[2].childNodes);
-        console.log("tbl.childNodes[2].childNodes.length = ");
-        console.log(tbl.childNodes[2].childNodes.length);
-        var gridContent = document.getElementsByClassName("grd_Cont");
-        console.log("gridContent=");
-        console.log(gridContent);
-        console.log("gridContent.length=");
-        console.log(gridContent.length);
-        console.log("gridContent[0]=");
-        console.log(gridContent[0]);
-        console.log("gridContent[0].childNodes=");
-        console.log(gridContent[0].childNodes);
-        if (gridContent.length >= 1) {*/
-        //var list = document.getElementById("myList");   // Get the <ul> element with id="myList"
-        //   list.removeChild(list.childNodes[0]);
-        //gridContent[0].removeChild(gridContent[0].childNodes[2]);
-        //location.reload();
-        //tf.destroy();
-        //}
       }
       document.getElementById("resultsTable").style.display = "inline-block";
     };
