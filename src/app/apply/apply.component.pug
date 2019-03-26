@@ -1,0 +1,189 @@
+doctype html
+html
+  head
+    title #{title}
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    meta(charset='UTF-8')
+
+    //link(rel='stylesheet', href='../stylesheets/style.css')
+    //link(rel='stylesheet', href='../stylesheets/jstyle.css')
+
+  body
+    include ../partials/header.partial.pug
+    #container
+      form#applicationForm.main.center.depth(action='http://localhost:3000/apply', method='POST', name='application')
+        img.center.w-10.stackable-s(src='../images/logo.png')
+        h3.text-center Application and Notice For Membership in Local Union No.
+        input.w-10.center.stackable-xs.text-center(type='number', min='1', placeholder='Union Number', name='postBodyArray', required, value='89')
+        h4.text-center.stackable-m Affiliated With the International Brotherhood of Teamsters
+        input#formDate(type='date', name='postBodyArray', required)
+        h3.text-center Name & Occupation
+        input.formItem.w-33.stackable-xs(type='text', placeholder='Last Name', name='postBodyArray', required, value="**test**")
+        |
+        |
+        input.formItem.w-33.stackable-xs(type='text', placeholder='First Name', name='postBodyArray', required, value="**test**")
+        |
+        |
+        input.formItem.w-33.stackable-s(type='text', placeholder='Middle Initial', name='postBodyArray', required, value="**test**")
+        input.formItem.w-100.stackable-s(type='text', placeholder='Occupation', name='postBodyArray', required, value="**test**")
+
+        h3.text-center Contact Information
+        input.formItem.w-75(type='text', placeholder='Street Address', name='postBodyArray', required, value="**test**")
+        |
+        |
+        input#phoneNumber1.formItem.w-25.stackable-s((keyup)="onKeyPN1($event)", type='text', placeholder='Phone Number', name='postBodyArray', required, value="(000) 000 - 0000")
+        input.formItem.w-33.stackable-xs(type='text', placeholder='City', name='postBodyArray', required, value='Louisville')
+        |
+        |
+        select(name='postBodyArray', form='applicationForm', required)
+          option(value='AL') Alabama
+          option(value='AK') Alaska
+          option(value='AZ') Arizona
+          option(value='AR') Arkansas
+          option(value='CA') California
+          option(value='CO') Colorado
+          option(value='CT') Connecticut
+          option(value='DE') Delaware
+          option(value='DC') District Of Columbia
+          option(value='FL') Florida
+          option(value='GA') Georgia
+          option(value='HI') Hawaii
+          option(value='ID') Idaho
+          option(value='IL') Illinois
+          option(value='IN') Indiana
+          option(value='IA') Iowa
+          option(value='KS') Kansas
+          option(value='KY', selected) Kentucky
+          option(value='LA') Louisiana
+          option(value='ME') Maine
+          option(value='MD') Maryland
+          option(value='MA') Massachusetts
+          option(value='MI') Michigan
+          option(value='MN') Minnesota
+          option(value='MS') Mississippi
+          option(value='MO') Missouri
+          option(value='MT') Montana
+          option(value='NE') Nebraska
+          option(value='NV') Nevada
+          option(value='NH') New Hampshire
+          option(value='NJ') New Jersey
+          option(value='NM') New Mexico
+          option(value='NY') New York
+          option(value='NC') North Carolina
+          option(value='ND') North Dakota
+          option(value='OH') Ohio
+          option(value='OK') Oklahoma
+          option(value='OR') Oregon
+          option(value='PA') Pennsylvania
+          option(value='RI') Rhode Island
+          option(value='SC') South Carolina
+          option(value='SD') South Dakota
+          option(value='TN') Tennessee
+          option(value='TX') Texas
+          option(value='UT') Utah
+          option(value='VT') Vermont
+          option(value='VA') Virginia
+          option(value='WA') Washington
+          option(value='WV') West Virginia
+          option(value='WI') Wisconsin
+          option(value='WY') Wyoming
+        |
+        |
+        input.formItem.w-33.stackable-s(type='text', minlength='5', maxlength='5', placeholder='Zip Code', name='postBodyArray', required, value="**test**")
+        h3.text-center Employer
+        input.formItem.w-75.stackable-xs(type='text', placeholder='Employer', name='postBodyArray', required, value="**test**")
+        |
+        |
+        input.formItem.w-25.stackable-xs(type='date', placeholder='Employment Date (MM-DD-YYYY)', name='postBodyArray', required, value="2019-03-25")
+        input.formItem.w-75(type='text', placeholder='Employer Street Address', name='postBodyArray', required, value="**test**")
+        |
+        |
+        input#phoneNumber2.formItem.w-25.stackable-s((keyup)="onKeyPN2($event)", type='text', placeholder='Employer Phone Number', name='postBodyArray', required, value="(000) 000 - 0000")
+        input.formItem.w-33.stackable-xs(type='text', placeholder='Employer City', name='postBodyArray', required, value='Louisville')
+        |
+        |
+        select(name='postBodyArray', form='applicationForm', required)
+          option(value='AL') Alabama
+          option(value='AK') Alaska
+          option(value='AZ') Arizona
+          option(value='AR') Arkansas
+          option(value='CA') California
+          option(value='CO') Colorado
+          option(value='CT') Connecticut
+          option(value='DE') Delaware
+          option(value='DC') District Of Columbia
+          option(value='FL') Florida
+          option(value='GA') Georgia
+          option(value='HI') Hawaii
+          option(value='ID') Idaho
+          option(value='IL') Illinois
+          option(value='IN') Indiana
+          option(value='IA') Iowa
+          option(value='KS') Kansas
+          option(value='KY', selected) Kentucky
+          option(value='LA') Louisiana
+          option(value='ME') Maine
+          option(value='MD') Maryland
+          option(value='MA') Massachusetts
+          option(value='MI') Michigan
+          option(value='MN') Minnesota
+          option(value='MS') Mississippi
+          option(value='MO') Missouri
+          option(value='MT') Montana
+          option(value='NE') Nebraska
+          option(value='NV') Nevada
+          option(value='NH') New Hampshire
+          option(value='NJ') New Jersey
+          option(value='NM') New Mexico
+          option(value='NY') New York
+          option(value='NC') North Carolina
+          option(value='ND') North Dakota
+          option(value='OH') Ohio
+          option(value='OK') Oklahoma
+          option(value='OR') Oregon
+          option(value='PA') Pennsylvania
+          option(value='RI') Rhode Island
+          option(value='SC') South Carolina
+          option(value='SD') South Dakota
+          option(value='TN') Tennessee
+          option(value='TX') Texas
+          option(value='UT') Utah
+          option(value='VT') Vermont
+          option(value='VA') Virginia
+          option(value='WA') Washington
+          option(value='WV') West Virginia
+          option(value='WI') Wisconsin
+          option(value='WY') Wyoming
+        |
+        |
+        input.formItem.w-33.stackable-s(type='text', minlength=5, maxlength=5, placeholder='Employer Zip Code', name='postBodyArray', required, value="00000")
+        h3.text-center Fee
+        input.formItem.w-25.stackable-xs(type='number', placeholder='Initiation Fee (USD)', name='postBodyArray', required, value="0")
+        |
+        |
+        input.formItem.w-75.stackable-s(type='text', placeholder='Paid To...', name='postBodyArray', required, value="**test**")
+        h3.text-center Personal Information
+        .scan-fields.formItem.w-50.stackable-s
+          label(for='d-o-b') Date of Birth
+          |
+          |
+          input#d-o-b(type='date', placeholder='Date of Birth', name='postBodyArray', required, value="2019-03-25")
+        .scan-fields.formItem.w-50.stackable-s
+          label(for='s-s-n') Social Security Number
+          |
+          |
+          input#s-s-n((keyup)="onKeySSN($event)", type='text', minlength=11, maxlength=11, placeholder='###-##-####', name='postBodyArray', required)
+
+        label(for='previous') Previous member of the local Teamster Union?
+        |
+        |
+        select(id='previous' name='postBodyArray', form='applicationForm', required)
+          option(value='no') No
+          option(value='yes') Yes
+        br
+        br
+        p.formItem.inline-margin-1 If so, what Local Union Number?
+        input.formItem.w-10.stackable-s(type='text', placeholder='enter Union Number here, or “NA” if not applicable', name='postBodyArray', required, value='NA')
+        br
+
+        button.center Submit
