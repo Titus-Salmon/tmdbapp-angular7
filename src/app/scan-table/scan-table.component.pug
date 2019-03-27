@@ -1,0 +1,15 @@
+.mat-elevation-z8
+  ng-container(matcolumndef='id')
+  ng-container(matcolumndef='name')
+  table.full-width-table(mat-table='', [datasource]='dataSource', matsort='', aria-label='Elements')
+    // Id Column
+    tbody
+      tr
+        th(mat-header-cell='', *matheadercelldef='', mat-sort-header='') Id
+        td(mat-cell='', *matcelldef='let row') {{row.id}}
+        // Name Column
+        th(mat-header-cell='', *matheadercelldef='', mat-sort-header='') Name
+        td(mat-cell='', *matcelldef='let row') {{row.name}}
+      tr(mat-header-row='', *matheaderrowdef='displayedColumns')
+      tr(mat-row='', *matrowdef='let row; columns: displayedColumns;')
+  mat-paginator(#paginator='', [length]='dataSource.data.length', [pageindex]='0', [pagesize]='50', [pagesizeoptions]='[25, 50, 100, 250]')

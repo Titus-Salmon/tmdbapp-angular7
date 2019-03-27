@@ -8,8 +8,10 @@ html
         //script(src='/assets/Tablefilter-master/dist/tablefilter/tablefilter.js')
     body
         include ../partials/header.partial.pug
-        #tableHideShow
-        table
+
+        app-scan-table
+
+        table#tableHideShow
             thead
                 tr.fltrow(style='background-color: #f2f2f2 !important')
                     td
@@ -34,7 +36,7 @@ html
                         label(for='application-date') Application Date
                         input#application-date.flt(type='date', name='date')
                     td
-                        button.flt(type='button', (click)='showScanResults()') Search
+                        button.flt(type='button', (click)='showScanResultsT0d()') Search
                         //
                             <button type="button"
                             onclick="clearTable(); clearCaption(); showScanResults(); tf.destroy(); deleteFirstRow();"

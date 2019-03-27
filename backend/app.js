@@ -37,7 +37,8 @@ app.use('/scan', scanRouter); //t0d
 //app.use('/successful-delete', delete_success_Router); //t0d
 
 app.use(helmet()); //t0d
-app.use(bodyParser.urlencoded({ //t0d //bodyParser = middleware
+
+app.use(bodyParser.urlencoded({ //t0d //bodyParser = middleware; can also use bodyParser.json
     extended: false
 }));
 
