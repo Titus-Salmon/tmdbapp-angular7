@@ -1,39 +1,89 @@
 <mat-card>
   <form>
-      <label for="social-security">SSN</label>
-      <input id="social-security" type="text" name="ssn" />
+    <label for="social-security">SSN</label>
+    <input id="social-security" type="text" name="ssn" />
 
-      <label for="dob">DOB</label>
-      <input id="dob" type="date" name="dob" />
+    <label for="dob">DOB</label>
+    <input id="dob" type="date" name="dob" />
 
-      <label for="last-name">Last Name</label>
-      <input id="last-name" type="text" name="lname" />
+    <label for="last-name">Last Name</label>
+    <input id="last-name" type="text" name="lname" />
 
-      <label for="first-name">First Name</label>
-      <input id="first-name" type="text" name="fname" />
+    <label for="first-name">First Name</label>
+    <input id="first-name" type="text" name="fname" />
 
-      <label for="occupation">Occupation</label>
-      <input id="occupation" type="text" name="occupation" />
+    <label for="occupation">Occupation</label>
+    <input id="occupation" type="text" name="occupation" />
 
-      <label for="emp">Employer</label>
-      <input id="emp" type="text" name="employer" />
+    <label for="emp">Employer</label>
+    <input id="emp" type="text" name="employer" />
 
-      <label for="application-date">Application Date</label>
-      <input id="application-date" type="date" name="date" />
+    <label for="application-date">Application Date</label>
+    <input id="application-date" type="date" name="date" />
 
-      <button type="button" (click)="showScanResultsT0dd()">Search</button>
+    <button type="button" (click)="showScanResultsT0dd()">Search</button>
   </form>
 
 
 </mat-card>
+<!--
+<mat-card>
+  <ul>
+    <li *ngFor="let element of this.scanResultsTable[0]">{{element['ssn']['S']}}</li>
+  </ul>
+  <ul>
+    <li *ngFor="let element of this.scanResultsTable[0]">{{element['dob']['S']}}</li>
+  </ul>
+</mat-card>
+-->
+
 
 
 <mat-table [dataSource]="scanResultsTableDataSource" class="mat-elevation-z8">
+  <!--
 
-  <ng-container matColumnDef="ssn">
-    <mat-header-cell *matHeaderCellDef>SSN</mat-header-cell>
-    <mat-cell *matCellDef="let element"> {{element}} </mat-cell>
+  <ng-container *ngFor="let col of cols" [matColumnDef]="col">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> {{ col }} </th>
+    <td mat-cell *matCellDef="let element"> {{ element[col] }} </td>
   </ng-container>
+-->
+
+
+  <ng-container matColumnDef='ssn'>
+    <mat-header-cell *matHeaderCellDef>SSN</mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.ssn}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="dob">
+    <mat-header-cell *matHeaderCellDef>DOB</mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.dob}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="lname">
+    <mat-header-cell *matHeaderCellDef>Last Name</mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.lname}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="fname">
+    <mat-header-cell *matHeaderCellDef>First Name</mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.fname}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="occupation">
+    <mat-header-cell *matHeaderCellDef>Occupation</mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.occupation}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="employer">
+    <mat-header-cell *matHeaderCellDef>Employer</mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.employer}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="date">
+    <mat-header-cell *matHeaderCellDef>Date</mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.date}} </mat-cell>
+  </ng-container>
+
 
   <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
   <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>

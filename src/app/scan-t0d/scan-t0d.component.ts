@@ -8,7 +8,7 @@ import {
   MatSort,
   MatCard
 } from "@angular/material";
-import {MatButtonModule} from '@angular/material/button'
+import { MatButtonModule } from "@angular/material/button";
 import { ScanResultsObject } from "./scanResultsObject.model";
 
 @Component({
@@ -17,17 +17,17 @@ import { ScanResultsObject } from "./scanResultsObject.model";
   styleUrls: ["./scan-t0d.component.css"]
 })
 export class ScanT0dComponent implements OnInit {
-  scanResultsTable: ScanResultsObject[] = [];
-  //scanResultsTable = [];
+  //scanResultsTable: ScanResultsObject[] = [];
+  scanResultsTable = [];
   scanResultsTableDataSource = new MatTableDataSource();
   displayedColumns: string[] = [
-    "ssn"
-    //"DOB",
-    //"Last Name",
-    //"First Name",
-    //"Occupation",
-    //"Employer",
-    //"Application Date"
+    "ssn",
+    "dob",
+    "lname",
+    "fname",
+    "occupation",
+    "employer",
+    "date"
   ];
 
   constructor(private httpClient: HttpClient) {}
@@ -55,10 +55,20 @@ export class ScanT0dComponent implements OnInit {
       .subscribe(response => {
         let i = 0;
         for (i = 0; i < Object.keys(response[0]).length; i++) {
-          this.scanResultsTable.push(response[0][i]["ssn"]["S"]);
+          this.scanResultsTable.push({
+            ssn: response[0][i]["ssn"]["S"],
+            dob: response[0][i]["dob"]["S"],
+            lname: response[0][i]["lname"]["S"],
+            fname: response[0][i]["fname"]["S"],
+            occupation: response[0][i]["occupation"]["S"],
+            employer: response[0][i]["employer"]["S"],
+            date: response[0][i]["date"]["S"],
+          });
           this.scanResultsTableDataSource.data = this.scanResultsTable;
-          console.log(this.scanResultsTable);
+
+          //console.dir(this.scanResultsTable);
         }
+        console.dir(this.scanResultsTable);
       });
   }
 
