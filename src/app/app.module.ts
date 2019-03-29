@@ -10,12 +10,16 @@ import { SsnErrorComponent } from './ssn-error/ssn-error.component';
 import { ScanComponent } from './scan/scan.component';
 
 import { MatTableModule, MatPaginatorModule, MatSortModule } from '@angular/material';
+import {MatButtonModule} from '@angular/material/button';
+import {MatCardModule} from '@angular/material/card';
 import { ScanTableComponent } from './scan-table/scan-table.component';
+import {FormsModule} from '@angular/forms';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 //import { Http } from "@angular/http";
 import {HttpClientModule} from '@angular/common/http';
+import { ScanT0dComponent } from './scan-t0d/scan-t0d.component';
 
 @NgModule({
   declarations: [
@@ -26,13 +30,17 @@ import {HttpClientModule} from '@angular/common/http';
     SsnErrorComponent,
     ScanComponent,
     ScanTableComponent,
+    ScanT0dComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    MatCardModule,
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
+    MatButtonModule,
+    FormsModule,
     BrowserAnimationsModule,
     HttpClientModule,
   ],
