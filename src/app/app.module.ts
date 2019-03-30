@@ -44,6 +44,9 @@ import { ScanT0dComponent } from './scan-t0d/scan-t0d.component';
     BrowserAnimationsModule,
     HttpClientModule,
   ],
+  exports: [
+    MatPaginatorModule
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })
