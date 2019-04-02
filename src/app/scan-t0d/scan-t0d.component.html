@@ -1,30 +1,55 @@
-<mat-card>
-  <form>
-    <label for="social-security">SSN</label>
-    <input id="social-security" type="text" name="ssn" />
-
-    <label for="dob">DOB</label>
-    <input id="dob" type="date" name="dob" />
-
-    <label for="last-name">Last Name</label>
-    <input id="last-name" type="text" name="lname" />
-
-    <label for="first-name">First Name</label>
-    <input id="first-name" type="text" name="fname" />
-
-    <label for="occupation">Occupation</label>
-    <input id="occupation" type="text" name="occupation" />
-
-    <label for="emp">Employer</label>
-    <input id="emp" type="text" name="employer" />
-
-    <label for="application-date">Application Date</label>
-    <input id="application-date" type="date" name="date" />
-
-    <button type="button" (click)="showScanResultsT0dd()">Search</button>
-  </form>
+<mat-card class="mat-elevation-z8" style="padding:0 !important">
+  <div class="Rtable Rtable--8cols">
+    <div class="Rtable-cell">
+      <mat-form-field>
+        <label for="social-security">SSN</label>
+        <input matInput id="social-security" type="text" maxlength="11" name="ssn">
+      </mat-form-field>
+    </div>
+    <div class="Rtable-cell">
+      <mat-form-field>
+        <label for="dob">DOB</label>
+        <input matInput id="dob" type="text" name="dob">
+      </mat-form-field>
+    </div>
+    <div class="Rtable-cell">
+      <mat-form-field>
+        <label for="last-name">Last Name</label>
+        <input matInput id="last-name" type="text" name="lname">
+      </mat-form-field>
+    </div>
+    <div class="Rtable-cell">
+      <mat-form-field>
+        <label for="first-name">First Name</label>
+        <input matInput id="first-name" type="text" name="fname">
+      </mat-form-field>
+    </div>
+    <div class="Rtable-cell">
+      <mat-form-field>
+        <label for="occupation">Occupation</label>
+        <input matInput id="occupation" type="text" name="occupation">
+      </mat-form-field>
+    </div>
+    <div class="Rtable-cell">
+      <mat-form-field>
+        <label for="emp">Employer</label>
+        <input matInput id="emp" type="text" name="employer">
+      </mat-form-field>
+    </div>
+    <div class="Rtable-cell">
+      <mat-form-field>
+        <label for="application-date">Application Date</label>
+        <input matInput id="application-date" type="date" name="date">
+      </mat-form-field>
+    </div>
+    <div class="Rtable-cell">
+      <button mat-raised-button (click)="showScanResultsT0dd()" style="margin: 1.5rem 0 0 2rem"
+        color="primary">Search</button>
+    </div>
+  </div>
 </mat-card>
 
+<br><br>
 
 <mat-table [dataSource]="scanResultsTableDataSource" class="mat-elevation-z8" matSort>
 
@@ -70,5 +95,5 @@
 </mat-table>
 
 <mat-paginator #paginator [length]="scanResultsTableDataSource.data.length" [pageIndex]="0" [pageSize]="50"
-  [pageSizeOptions]="[3, 10, 25, 50, 100, 250]">
+  [pageSizeOptions]="[5, 10, 25, 50, 100, 250]">
 </mat-paginator>

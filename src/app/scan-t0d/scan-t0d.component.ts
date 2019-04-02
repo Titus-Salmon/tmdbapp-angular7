@@ -17,7 +17,6 @@ import { ScanResultsObject } from "./scanResultsObject.model";
   styleUrls: ["./scan-t0d.component.css"]
 })
 export class ScanT0dComponent implements OnInit, AfterViewInit {
-
   //scanResultsTable: ScanResultsObject[] = [];
   scanResultsTable = [];
   scanResultsTableDataSource = new MatTableDataSource();
@@ -37,7 +36,6 @@ export class ScanT0dComponent implements OnInit, AfterViewInit {
   constructor(private httpClient: HttpClient) {}
 
   showScanResultsT0dd() {
-
     this.httpClient
       .post(
         "http://localhost:3000/scan/results",
@@ -68,20 +66,43 @@ export class ScanT0dComponent implements OnInit, AfterViewInit {
             FNAME: response[0][i]["fname"]["S"],
             OCCUPATION: response[0][i]["occupation"]["S"],
             EMPLOYER: response[0][i]["employer"]["S"],
-            DATE: response[0][i]["date"]["S"],
+            DATE: response[0][i]["date"]["S"]
           });
           this.scanResultsTableDataSource.data = this.scanResultsTable;
         }
         console.dir(this.scanResultsTable);
-      })
+      });
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    /******begin SSN AUTOFORMAT**************************************************************************************/
+    (<HTMLInputElement>document.getElementById("social-security")).onkeyup = function() {
+      //auto formaatting for ssn entry
+      var val = (<HTMLInputElement>document.getElementById("social-security")).value.replace(/\D/g, "");
+      var newVal = "";
+      if (val.length > 4) {
+        (<HTMLInputElement>document.getElementById("social-security")).value = val;
+      }
+      if (val.length > 3 && val.length < 6) {
+        newVal += val.substr(0, 3) + "-";
+        val = val.substr(3);
+      }
+      if (val.length > 5) {
+        newVal += val.substr(0, 3) + "-";
+        newVal += val.substr(3, 2) + "-";
+        val = val.substr(5);
+      }
+      newVal += val;
+      (<HTMLInputElement>document.getElementById("social-security")).value = newVal;
+    };
+    /******end SSN AUTOFORMAT**************************************************************************************/
+  }
 
   ngAfterViewInit() {
     this.scanResultsTableDataSource.paginator = this.paginator;
     this.scanResultsTableDataSource.sort = this.sort;
-    this.scanResultsTableDataSource.sortingDataAccessor = (data, header) => data[header]; //needed to correct for incorrect
+    this.scanResultsTableDataSource.sortingDataAccessor = (data, header) =>
+      data[header]; //needed to correct for incorrect
     //sorting if column has a mixture of letters, numbers, and symbols
   }
 }
