@@ -44,9 +44,13 @@
         <input matInput id="application-date" type="date" name="date">
       </mat-form-field>
     </div>
-    <div class="Rtable-cell">
-      <button mat-raised-button (click)="showScanResultsT0dd()" style="margin: 1.5rem 0 0 2rem"
+    <div class="Rtable-cell" style="padding:0 !important">
+      <button mat-mini-fab (click)="showScanResultsT0dd()" style="margin: 1.5rem .5rem 0 0"
         color="primary">Search</button>
+      <button mat-mini-fab (click)="showScanResultsT0dd()" style="margin: 1.5rem .5rem 0 0"
+      color="accent">Edit</button>
+      <button mat-mini-fab (click)="deleteData()" style="margin: 1.5rem 0 0 0"
+      color="warn">Delete</button>
     </div>
   </div>
 </mat-card>
@@ -92,7 +96,8 @@
 
 
   <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;" [ngClass]="{'highlight': selectedRowIndex == row}"
+    (click)="onRowClicked(row); highlight(row)"></mat-row>
 
 </mat-table>
 

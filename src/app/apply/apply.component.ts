@@ -1,11 +1,47 @@
 import { Component, OnInit } from "@angular/core";
+import { HttpClient } from '@angular/common/http';
+import {ApplicationForm} from '../application-form';
+import {ApplyServiceService} from '../apply-service.service';
 
 @Component({
   selector: "app-apply",
-  templateUrl: "./apply.component.pug",
-  styleUrls: ["./apply.component.css"]
+  templateUrl: "./apply.component.html",
+  styleUrls: ["../../bootstrap.css"]
 })
 export class ApplyComponent implements OnInit {
+
+  /**
+   * public unionNumber: string,
+    public date: string,
+    public lastName: string,
+    public firstName: string,
+    public middleInit: string,
+    public occupation: string,
+    public streetAdd: string,
+    public phone: string,
+    public city: string,
+    public state: string,
+    public zip: string,
+    public emp: string,
+    public empDate: string,
+    public empPhone: string,
+    public empCity: string,
+    public empState: string,
+    public empZip: string,
+    public initFee: string,
+    public paidTo: string,
+    public dob: string,
+    public ssn: string,
+    public previous: string,
+    public prevNumber: string,
+   */
+
+  appFormModel = new ApplicationForm('0-unionNumber', '1111-01-01', '2-lastName',
+  '3-firstName', '4-middleInit', '5-occupation', '6-streetAdd', '7-phone', '8-city',
+  'KY', '10-zip', '11-emp', '2222-02-02', '13-empAddr', '14-empPhone', '15-empCity',
+  'AK', '17-empZip', '18-initFee', '19-paidTo', '3333-03-03', '21-ssn',
+  '22-previous', '23-prevNumber ');
+
   date: Date;
   day: any;
   month: any;
@@ -23,17 +59,19 @@ export class ApplyComponent implements OnInit {
   evt: any;
   size: any;
 
-  constructor() {}
+  constructor(private applyServiceT0d: ApplyServiceService) {}
+
+  log(x) {console.log(x)}
 
   ngOnInit() {
     console.log("ngOnInit from apply.component.ts");
 
     this.SetDate();
 
-    this.ssnId = <HTMLInputElement>document.getElementById("s-s-n");
+    this.ssnId = <HTMLInputElement> document.getElementById("s-s-n");
 
-    this.pn1 = <HTMLInputElement>document.getElementById("phoneNumber1");
-    this.pn2 = <HTMLInputElement>document.getElementById("phoneNumber2");
+    this.pn1 = <HTMLInputElement> document.getElementById("phoneNumber1");
+    this.pn2 = <HTMLInputElement> document.getElementById("phoneNumber2");
   }
 
   onKeySSN(event: Event, any: any): any {
@@ -110,9 +148,19 @@ export class ApplyComponent implements OnInit {
     }
     if (this.day < 10) this.day = "0" + this.day;
     this.today = this.year + "-" + this.month + "-" + this.day;
-    (<HTMLInputElement>document.getElementById("formDate")).value = this.today;
+    (<HTMLInputElement> document.getElementById("formDate")).value = this.today;
 
     console.log("formDate.value=");
-    console.log((<HTMLInputElement>document.getElementById("formDate")).value);
+    console.log((<HTMLInputElement> document.getElementById("formDate")).value);
   }
+
+  onSubmit(){
+    console.log(this.appFormModel);
+    this.applyServiceT0d.applyT0d(this.appFormModel)
+    .subscribe(
+      dataT0d => console.log('dataT0d~~~~~>', dataT0d),
+      error => console.error('error~~~~~>', error)
+    )
+  };
+
 }

@@ -21,10 +21,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 //import { Http } from "@angular/http";
 import {HttpClientModule} from '@angular/common/http';
 import { ScanT0dComponent } from './scan-t0d/scan-t0d.component';
+import { ScanEditT0dComponent } from './scan-edit-t0d/scan-edit-t0d.component';
+import { HeaderComponent } from './partials/header.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    HeaderComponent,
     HomeComponent,
     ApplyComponent,
     ApplySuccessComponent,
@@ -32,6 +35,7 @@ import { ScanT0dComponent } from './scan-t0d/scan-t0d.component';
     ScanComponent,
     ScanTableComponent,
     ScanT0dComponent,
+    ScanEditT0dComponent
   ],
   imports: [
     BrowserModule,

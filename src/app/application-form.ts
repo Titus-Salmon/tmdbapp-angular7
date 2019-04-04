@@ -1,0 +1,28 @@
+export class ApplicationForm {
+  constructor(
+    public unionNumber: string,
+    public date: string,
+    public lastName: string,
+    public firstName: string,
+    public middleInit: string,
+    public occupation: string,
+    public streetAdd: string,
+    public phone: string,
+    public city: string,
+    public state: string,
+    public zip: string,
+    public emp: string,
+    public empDate: string,
+    public empAddr: string,
+    public empPhone: string,
+    public empCity: string,
+    public empState: string,
+    public empZip: string,
+    public initFee: string,
+    public paidTo: string,
+    public dob: string,
+    public ssn: string,
+    public previous: string,
+    public prevNumber: string,
+  ){}
+}

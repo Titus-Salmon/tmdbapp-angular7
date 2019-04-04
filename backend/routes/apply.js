@@ -9,6 +9,13 @@ var router = express.Router();
   });
 });*/
 
+router.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PATCH, PUT, DELETE, METHODS');
+  next();
+});
+
 router.get('/', function (req, res, next) {
   res.send('apply.js on port 3000 listening for POST req to /apply from port 4200');
 });
@@ -18,8 +25,8 @@ router.post('/', (req, res, next) => { //take POST request data from teamster ap
   //put POST request data into database table
   const postBody = req.body;
 
-  console.log('Object.values(postBody)[0][21] =');
-  console.log(Object.values(postBody)[0][21]); //social security number
+  console.log('Object.values(postBody)[21] =');
+  console.log(Object.values(postBody)[21]); //social security number
 
   /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   //the following puts 'postBody' json into dynamodb database, IF ssn not duplicated/////////////////////////////////////////
@@ -39,7 +46,7 @@ router.post('/', (req, res, next) => { //take POST request data from teamster ap
     /* required */
     ExpressionAttributeValues: {
       ":ssn": {
-        "S": Object.values(postBody)[0][21] //social security number
+        "S": Object.values(postBody)[21] //social security number
       }
     },
     FilterExpression: "ssn = :ssn"
@@ -61,79 +68,79 @@ router.post('/', (req, res, next) => { //take POST request data from teamster ap
           TableName: "teamster-application-db",
           Item: { // a map of attribute name to AttributeValue
             union_number: {
-              'S': Object.values(postBody)[0][0]
+              'S': Object.values(postBody)[0]
             },
             date: {
-              'S': Object.values(postBody)[0][1]
+              'S': Object.values(postBody)[1]
             },
             lname: {
-              'S': Object.values(postBody)[0][2]
+              'S': Object.values(postBody)[2]
             },
             lname_lowercase: {
-              'S': Object.values(postBody)[0][2].toLowerCase()
+              'S': Object.values(postBody)[2].toLowerCase()
             },
             fname: {
-              'S': Object.values(postBody)[0][3]
+              'S': Object.values(postBody)[3]
             },
             mi: {
-              'S': Object.values(postBody)[0][4]
+              'S': Object.values(postBody)[4]
             },
             occupation: {
-              'S': Object.values(postBody)[0][5]
+              'S': Object.values(postBody)[5]
             },
             address: {
-              'S': Object.values(postBody)[0][6]
+              'S': Object.values(postBody)[6]
             },
             phone: {
-              'S': Object.values(postBody)[0][7]
+              'S': Object.values(postBody)[7]
             },
             city: {
-              'S': Object.values(postBody)[0][8]
+              'S': Object.values(postBody)[8]
             },
             state: {
-              'S': Object.values(postBody)[0][9]
+              'S': Object.values(postBody)[9]
             },
             zip: {
-              'S': Object.values(postBody)[0][10]
+              'S': Object.values(postBody)[10]
             },
             employer: {
-              'S': Object.values(postBody)[0][11]
+              'S': Object.values(postBody)[11]
             },
             employment_date: {
-              'S': Object.values(postBody)[0][12]
+              'S': Object.values(postBody)[12]
             },
             employer_address: {
-              'S': Object.values(postBody)[0][13]
+              'S': Object.values(postBody)[13]
             },
             employer_phone: {
-              'S': Object.values(postBody)[0][14]
+              'S': Object.values(postBody)[14]
             },
             employer_city: {
-              'S': Object.values(postBody)[0][15]
+              'S': Object.values(postBody)[15]
             },
             employer_state: {
-              'S': Object.values(postBody)[0][16]
+              'S': Object.values(postBody)[16]
             },
             employer_zip: {
-              'S': Object.values(postBody)[0][17]
+              'S': Object.values(postBody)[17]
             },
             fee: {
-              'S': Object.values(postBody)[0][18]
+              'S': Object.values(postBody)[18]
             },
             paid_to: {
-              'S': Object.values(postBody)[0][19]
+              'S': Object.values(postBody)[19]
             },
             dob: {
-              'S': Object.values(postBody)[0][20]
+              'S': Object.values(postBody)[20]
             },
             ssn: { //'ssn' is primary key for 'teamster-application-database' table; must always be included in 'putItem' method
-              'S': Object.values(postBody)[0][21]
+              'S': Object.values(postBody)[21]
             },
             membership: {
-              'S': Object.values(postBody)[0][22]
+              'S': Object.values(postBody)[22]
             },
             previous_union_number: {
-              'S': Object.values(postBody)[0][23]
+              'S': Object.values(postBody)[23]
             },
           }
         };
@@ -153,11 +160,11 @@ router.post('/', (req, res, next) => { //take POST request data from teamster ap
 
 
         for (n = 0; n < 24; n++) {
-          console.log(Object.values(postBody)[0][n]);
+          console.log(Object.values(postBody)[n]);
         }
 
         console.log(postBody);
-        console.log(Object.values(postBody)[0]);
+        console.log(Object.values(postBody));
 
       } else {
 
