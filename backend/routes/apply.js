@@ -152,7 +152,8 @@ router.post('/', (req, res, next) => { //take POST request data from teamster ap
           else {
             /**GO TO SUCCESS PAGE */
             res.redirect('http://localhost:4200/apply-success');
-            console.log(data)
+            console.log('data ===>>>');
+            console.log(data);
           } // successful response
         });
 
@@ -163,8 +164,13 @@ router.post('/', (req, res, next) => { //take POST request data from teamster ap
           console.log(Object.values(postBody)[n]);
         }
 
+        console.log('postBody===>');
         console.log(postBody);
+        console.log('Object.values(postBody)===>');
         console.log(Object.values(postBody));
+
+        console.log('params.Item[\'union_number\']',params.Item['union_number']);
+        console.log('params.Item[\'union_number\'].S',params.Item['union_number'].S);
 
       } else {
 
