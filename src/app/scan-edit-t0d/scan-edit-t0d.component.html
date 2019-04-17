@@ -5,100 +5,111 @@
     <div class="Rtable-cell">
       <mat-form-field>
         <label for="social-security">SSN</label>
-        <input matInput id="social-security" type="text" maxlength="11" name="ssn">
+        <input matInput id="social-security" type="text" maxlength="11" name="ssn" />
       </mat-form-field>
     </div>
     <div class="Rtable-cell">
       <mat-form-field>
         <label for="dob">DOB</label>
-        <input matInput id="dob" type="text" name="dob">
+        <input matInput id="dob" type="text" name="dob" />
       </mat-form-field>
     </div>
     <div class="Rtable-cell">
       <mat-form-field>
         <label for="last-name">Last Name</label>
-        <input matInput id="last-name" type="text" name="lname">
+        <input matInput id="last-name" type="text" name="lname" />
       </mat-form-field>
     </div>
     <div class="Rtable-cell">
       <mat-form-field>
         <label for="first-name">First Name</label>
-        <input matInput id="first-name" type="text" name="fname">
+        <input matInput id="first-name" type="text" name="fname" />
       </mat-form-field>
     </div>
     <div class="Rtable-cell">
       <mat-form-field>
         <label for="occupation">Occupation</label>
-        <input matInput id="occupation" type="text" name="occupation">
+        <input matInput id="occupation" type="text" name="occupation" />
       </mat-form-field>
     </div>
     <div class="Rtable-cell">
       <mat-form-field>
         <label for="emp">Employer</label>
-        <input matInput id="emp" type="text" name="employer">
+        <input matInput id="emp" type="text" name="employer" />
       </mat-form-field>
     </div>
     <div class="Rtable-cell">
       <mat-form-field>
         <label for="application-date">Application Date</label>
-        <input matInput id="application-date" type="date" name="date">
+        <input matInput id="application-date" type="date" name="date" />
       </mat-form-field>
     </div>
     <div class="Rtable-cell" style="padding:0 !important">
-      <button mat-mini-fab (click)="showScanResultsT0dd()" style="margin: 1.5rem .5rem 0 0"
-        color="primary">Search</button>
-      <button mat-mini-fab (click)="showScanResultsT0dd()" style="margin: 1.5rem .5rem 0 0"
-      color="accent">Edit</button>
-      <button mat-mini-fab (click)="deleteData()" style="margin: 1.5rem 0 0 0"
-      color="warn">Delete</button>
+      <button mat-mini-fab (click)="showScanResultsT0dd()" style="margin: 1.5rem .5rem 0 0" color="primary">
+        Search
+      </button>
+
+      <!--
+        <a href="http://localhost:4200/edit-t0d"><button mat-mini-fab style="margin: 1.5rem .5rem 0 0" color="accent">
+          Edit-t0d
+        </button></a>
+      -->
+
+
+
+      <button mat-mini-fab (click)="goToEditPage()" style="margin: 1.5rem .5rem 0 0" color="accent">
+        Edit
+      </button>
+
+
+      <button mat-mini-fab (click)="deleteData()" style="margin: 1.5rem 0 0 0" color="warn">
+        Delete
+      </button>
     </div>
   </div>
 </mat-card>
 
-<br><br>
+<br /><br />
 
 <mat-table [dataSource]="scanResultsTableDataSource" class="mat-elevation-z8" matSort>
-
-  <ng-container matColumnDef='SSN'>
+  <ng-container matColumnDef="SSN">
     <mat-header-cell *matHeaderCellDef mat-sort-header>SSN</mat-header-cell>
-    <mat-cell *matCellDef="let element"> {{element.SSN}} </mat-cell>
+    <mat-cell *matCellDef="let element"> {{ element.SSN }} </mat-cell>
   </ng-container>
 
   <ng-container matColumnDef="DOB">
     <mat-header-cell *matHeaderCellDef mat-sort-header>DOB</mat-header-cell>
-    <mat-cell *matCellDef="let element"> {{element.DOB}} </mat-cell>
+    <mat-cell *matCellDef="let element"> {{ element.DOB }} </mat-cell>
   </ng-container>
 
   <ng-container matColumnDef="LNAME">
     <mat-header-cell *matHeaderCellDef mat-sort-header>Last Name</mat-header-cell>
-    <mat-cell *matCellDef="let element"> {{element.LNAME}} </mat-cell>
+    <mat-cell *matCellDef="let element"> {{ element.LNAME }} </mat-cell>
   </ng-container>
 
   <ng-container matColumnDef="FNAME">
     <mat-header-cell *matHeaderCellDef mat-sort-header>First Name</mat-header-cell>
-    <mat-cell *matCellDef="let element"> {{element.FNAME}} </mat-cell>
+    <mat-cell *matCellDef="let element"> {{ element.FNAME }} </mat-cell>
   </ng-container>
 
   <ng-container matColumnDef="OCCUPATION">
     <mat-header-cell *matHeaderCellDef mat-sort-header>Occupation</mat-header-cell>
-    <mat-cell *matCellDef="let element"> {{element.OCCUPATION}} </mat-cell>
+    <mat-cell *matCellDef="let element"> {{ element.OCCUPATION }} </mat-cell>
   </ng-container>
 
   <ng-container matColumnDef="EMPLOYER">
     <mat-header-cell *matHeaderCellDef mat-sort-header>Employer</mat-header-cell>
-    <mat-cell *matCellDef="let element"> {{element.EMPLOYER}} </mat-cell>
+    <mat-cell *matCellDef="let element"> {{ element.EMPLOYER }} </mat-cell>
   </ng-container>
 
   <ng-container matColumnDef="DATE">
     <mat-header-cell *matHeaderCellDef mat-sort-header>Date</mat-header-cell>
-    <mat-cell *matCellDef="let element"> {{element.DATE}} </mat-cell>
+    <mat-cell *matCellDef="let element"> {{ element.DATE }} </mat-cell>
   </ng-container>
 
-
   <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-  <mat-row *matRowDef="let row; columns: displayedColumns;" [ngClass]="{'highlight': selectedRowIndex == row}"
+  <mat-row *matRowDef="let row; columns: displayedColumns" [ngClass]="{ highlight: selectedRowIndex == row }"
     (click)="onRowClicked(row); highlight(row)"></mat-row>
-
 </mat-table>
 
 <mat-paginator #paginator [length]="scanResultsTableDataSource.data.length" [pageIndex]="0" [pageSize]="50"

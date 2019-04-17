@@ -24,6 +24,11 @@ import { ScanT0dComponent } from './scan-t0d/scan-t0d.component';
 import { ScanEditT0dComponent } from './scan-edit-t0d/scan-edit-t0d.component';
 import { HeaderComponent } from './partials/header.component';
 
+//import {StoreSSN} from './storeSSN.service';
+//import { SendSSNtoBackend } from './sendSSNtoBackend.service';
+import { EditT0dComponent } from './edit-t0d/edit-t0d.component';
+import { SuccessfulDeleteComponent } from './successful-delete/successful-delete.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,7 +40,9 @@ import { HeaderComponent } from './partials/header.component';
     ScanComponent,
     ScanTableComponent,
     ScanT0dComponent,
-    ScanEditT0dComponent
+    ScanEditT0dComponent,
+    EditT0dComponent,
+    SuccessfulDeleteComponent
   ],
   imports: [
     BrowserModule,

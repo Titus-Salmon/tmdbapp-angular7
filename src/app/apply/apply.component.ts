@@ -160,7 +160,7 @@ export class ApplyComponent implements OnInit {
     .subscribe(
       dataT0d => console.log('dataT0d~~~~~>', dataT0d),
       error => console.error('error~~~~~>', error)
-    )
+    ) //subscribes to post data returned from application form (=dataT0d) in applyServiceT0d instance of ApplyServiceService
   };
 
 }

@@ -10,6 +10,9 @@ import {
 } from "@angular/material";
 import { MatButtonModule } from "@angular/material/button";
 
+//import { StoreSSN } from '../storeSSN.service';
+//import { SendSSNtoBackend } from '../sendSSNtoBackend.service';
+
 @Component({
   selector: "app-scan-edit-t0d",
   templateUrl: "./scan-edit-t0d.component.html",
@@ -32,7 +35,8 @@ export class ScanEditT0dComponent implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(private httpClient: HttpClient) {}
+  //constructor(private httpClient: HttpClient, public storeSSN: StoreSSN, public sendSSNToBackend: SendSSNtoBackend) { }
+  constructor(private httpClient: HttpClient) { }
 
   selectedRowIndex: number = 0;
 
@@ -66,7 +70,7 @@ export class ScanEditT0dComponent implements OnInit, AfterViewInit {
 
     if (deleteConfirmation != false) {
       //redirect to Delete page upon clicking "delete" button
-      window.location.replace("http://localhost:3000/successful-delete");
+      window.location.replace("http://localhost:4200/successful-delete");
     }
   }
 
@@ -75,19 +79,19 @@ export class ScanEditT0dComponent implements OnInit, AfterViewInit {
       .post(
         "http://localhost:3000/scan/results",
         "ssn=" +
-          (<HTMLInputElement>document.getElementById("social-security")).value +
-          "&dob=" +
-          (<HTMLInputElement>document.getElementById("dob")).value +
-          "&lname=" +
-          (<HTMLInputElement>document.getElementById("last-name")).value +
-          "&fname=" +
-          (<HTMLInputElement>document.getElementById("first-name")).value +
-          "&occupation=" +
-          (<HTMLInputElement>document.getElementById("occupation")).value +
-          "&employer=" +
-          (<HTMLInputElement>document.getElementById("emp")).value +
-          "&date=" +
-          (<HTMLInputElement>document.getElementById("application-date")).value,
+        (<HTMLInputElement>document.getElementById("social-security")).value +
+        "&dob=" +
+        (<HTMLInputElement>document.getElementById("dob")).value +
+        "&lname=" +
+        (<HTMLInputElement>document.getElementById("last-name")).value +
+        "&fname=" +
+        (<HTMLInputElement>document.getElementById("first-name")).value +
+        "&occupation=" +
+        (<HTMLInputElement>document.getElementById("occupation")).value +
+        "&employer=" +
+        (<HTMLInputElement>document.getElementById("emp")).value +
+        "&date=" +
+        (<HTMLInputElement>document.getElementById("application-date")).value,
         { headers: { "Content-Type": "application/x-www-form-urlencoded" } }
       )
       .subscribe(response => {
@@ -109,12 +113,27 @@ export class ScanEditT0dComponent implements OnInit, AfterViewInit {
       });
   }
 
+
+  goToEditPage() {
+
+    //disable page redirect if edit button clicked without selecting anything
+    if (localStorage.length == 0) {
+      alert("You must select an entry to edit");
+      return false;
+    }
+
+    window.location.replace("http://localhost:4200/edit-t0d");
+  }
+
+
+
   ngOnInit() {
+    //this.storeSSN.onRowClicked(canBeAnything);
     localStorage.clear();
     /******begin SSN AUTOFORMAT**************************************************************************************/
     (<HTMLInputElement>(
       document.getElementById("social-security")
-    )).onkeyup = function() {
+    )).onkeyup = function () {
       //auto formaatting for ssn entry
       var val = (<HTMLInputElement>(
         document.getElementById("social-security")

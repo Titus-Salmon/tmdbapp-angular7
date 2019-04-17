@@ -8,6 +8,8 @@ import {SsnErrorComponent} from './ssn-error/ssn-error.component';
 import {ScanComponent} from './scan/scan.component';
 import {ScanT0dComponent} from './scan-t0d/scan-t0d.component';
 import {ScanEditT0dComponent} from './scan-edit-t0d/scan-edit-t0d.component';
+import {EditT0dComponent} from './edit-t0d/edit-t0d.component';
+import {SuccessfulDeleteComponent} from './successful-delete/successful-delete.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -15,7 +17,9 @@ const routes: Routes = [
   {path: 'apply-success', component: ApplySuccessComponent},
   {path: 'ssn-error', component: SsnErrorComponent},
   {path: 'scan-t0d', component: ScanT0dComponent},
-  {path: 'scan-edit-t0d', component: ScanEditT0dComponent}
+  {path: 'scan-edit-t0d', component: ScanEditT0dComponent},
+  {path: 'edit-t0d', component: EditT0dComponent},
+  {path: 'successful-delete', component: SuccessfulDeleteComponent}
 ];
 
 @NgModule({
