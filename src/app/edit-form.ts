@@ -1,0 +1,28 @@
+export class EditForm {
+  constructor(
+    public unionNumber: any,
+    public date: any,
+    public lastName: any,
+    public firstName: any,
+    public middleInit: any,
+    public occupation: any,
+    public streetAdd: any,
+    public phone: any,
+    public city: any,
+    public state: any,
+    public zip: any,
+    public emp: any,
+    public empDate: any,
+    public empAddr: any,
+    public empPhone: any,
+    public empCity: any,
+    public empState: any,
+    public empZip: any,
+    public initFee: any,
+    public paidTo: any,
+    public dob: any,
+    public ssn: any,
+    public previous: any,
+    public prevNumber: any,
+  ){}
+}

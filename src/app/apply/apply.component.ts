@@ -10,32 +10,6 @@ import {ApplyServiceService} from '../apply-service.service';
 })
 export class ApplyComponent implements OnInit {
 
-  /**
-   * public unionNumber: string,
-    public date: string,
-    public lastName: string,
-    public firstName: string,
-    public middleInit: string,
-    public occupation: string,
-    public streetAdd: string,
-    public phone: string,
-    public city: string,
-    public state: string,
-    public zip: string,
-    public emp: string,
-    public empDate: string,
-    public empPhone: string,
-    public empCity: string,
-    public empState: string,
-    public empZip: string,
-    public initFee: string,
-    public paidTo: string,
-    public dob: string,
-    public ssn: string,
-    public previous: string,
-    public prevNumber: string,
-   */
-
   appFormModel = new ApplicationForm('0-unionNumber', '1111-01-01', '2-lastName',
   '3-firstName', '4-middleInit', '5-occupation', '6-streetAdd', '7-phone', '8-city',
   'KY', '10-zip', '11-emp', '2222-02-02', '13-empAddr', '14-empPhone', '15-empCity',
