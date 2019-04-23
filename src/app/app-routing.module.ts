@@ -10,6 +10,7 @@ import {ScanT0dComponent} from './scan-t0d/scan-t0d.component';
 import {ScanEditT0dComponent} from './scan-edit-t0d/scan-edit-t0d.component';
 import {EditT0dComponent} from './edit-t0d/edit-t0d.component';
 import {SuccessfulDeleteComponent} from './successful-delete/successful-delete.component';
+import {EditSuccessComponent} from './edit-success/edit-success.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -19,7 +20,8 @@ const routes: Routes = [
   {path: 'scan-t0d', component: ScanT0dComponent},
   {path: 'scan-edit-t0d', component: ScanEditT0dComponent},
   {path: 'edit-t0d', component: EditT0dComponent},
-  {path: 'successful-delete', component: SuccessfulDeleteComponent}
+  {path: 'successful-delete', component: SuccessfulDeleteComponent},
+  {path: 'edit-success', component: EditSuccessComponent}
 ];
 
 @NgModule({

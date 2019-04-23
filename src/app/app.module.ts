@@ -28,6 +28,7 @@ import { HeaderComponent } from './partials/header.component';
 //import { SendSSNtoBackend } from './sendSSNtoBackend.service';
 import { EditT0dComponent } from './edit-t0d/edit-t0d.component';
 import { SuccessfulDeleteComponent } from './successful-delete/successful-delete.component';
+import { EditSuccessComponent } from './edit-success/edit-success.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { SuccessfulDeleteComponent } from './successful-delete/successful-delete
     ScanT0dComponent,
     ScanEditT0dComponent,
     EditT0dComponent,
-    SuccessfulDeleteComponent
+    SuccessfulDeleteComponent,
+    EditSuccessComponent
   ],
   imports: [
     BrowserModule,

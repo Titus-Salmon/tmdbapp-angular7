@@ -91,7 +91,10 @@ export class EditT0dComponent implements OnInit {
     .subscribe(
       dataT0d => console.log('dataT0d~~~~~>', dataT0d),
       error => console.error('error~~~~~>', error)
-    ) //subscribes to post data returned from edit form (=dataT0d) in editServiceT0d instance of EditServiceService
+    ); //subscribes to post data returned from edit form (=dataT0d) in editServiceT0d instance of EditServiceService
+  
+    window.location.replace("http://localhost:4200/edit-success");
+  
   };
 
 }
