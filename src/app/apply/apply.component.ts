@@ -10,11 +10,11 @@ import {ApplyServiceService} from '../apply-service.service';
 })
 export class ApplyComponent implements OnInit {
 
-  appFormModel = new ApplicationForm('0-unionNumber', '1111-01-01', '2-lastName',
+  appFormModel = new ApplicationForm('blah', '1111-01-01', '2-lastName',
   '3-firstName', '4-middleInit', '5-occupation', '6-streetAdd', '7-phone', '8-city',
   'KY', '10-zip', '11-emp', '2222-02-02', '13-empAddr', '14-empPhone', '15-empCity',
   'AK', '17-empZip', '18-initFee', '19-paidTo', '3333-03-03', '21-ssn',
-  '22-previous', '23-prevNumber ');
+  '22-previous', 'blah');
 
   date: Date;
   day: any;
@@ -35,7 +35,7 @@ export class ApplyComponent implements OnInit {
 
   constructor(private applyServiceT0d: ApplyServiceService) {}
 
-  log(x) {console.log(x)}
+  //log(x) {console.log(x)}
 
   ngOnInit() {
     console.log("ngOnInit from apply.component.ts");
@@ -129,12 +129,17 @@ export class ApplyComponent implements OnInit {
   }
 
   onSubmit(){
-    console.log(this.appFormModel);
+    console.log('this.appFormModel===>', this.appFormModel);
     this.applyServiceT0d.applyT0d(this.appFormModel)
     .subscribe(
       dataT0d => console.log('dataT0d~~~~~>', dataT0d),
       error => console.error('error~~~~~>', error)
-    ) //subscribes to post data returned from application form (=dataT0d) in applyServiceT0d instance of ApplyServiceService
+    ) //subscribes to post data sent from application form (=dataT0d) to localhost:3000/apply in applyServiceT0d instance of ApplyServiceService
+  
+    
+      window.location.replace("http://localhost:4200/apply-success");
+    
+
   };
 
 }

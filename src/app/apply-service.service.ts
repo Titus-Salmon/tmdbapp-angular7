@@ -13,5 +13,5 @@ export class ApplyServiceService {
 
   applyT0d(applyPost: ApplicationForm) {
     return this.httpT0d.post<any>(this.urlT0d, applyPost);
-  } //returns post data from application form to localhost:3000/apply
+  } //sends post data from application form to localhost:3000/apply
 }

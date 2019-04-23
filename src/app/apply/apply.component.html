@@ -19,7 +19,7 @@
 
       <div class="form-group">
         <label for="">Union Number</label>
-        <input type="number" required #unionNumber="ngModel" [class.is-invalid]="unionNumber.invalid && unionNumber.touched" class="form-control is-invalid" name="unionNumber" [(ngModel)]="appFormModel.unionNumber" />
+        <input type="text" required #unionNumber="ngModel" [class.is-invalid]="unionNumber.invalid && unionNumber.touched" class="form-control is-invalid" name="unionNumber" [(ngModel)]="appFormModel.unionNumber" />
       </div>
       {{unionNumber.valid}}
 
@@ -61,7 +61,7 @@
 
       <div class="form-group">
         <label for="">Phone Number</label>
-        <input type="tel" required #phone="ngModel" class="form-control" name="phone" [(ngModel)]="appFormModel.phone" />
+        <input type="text" required #phone="ngModel" class="form-control" name="phone" [(ngModel)]="appFormModel.phone" />
       </div>
       {{phone.valid}}
 
@@ -155,7 +155,7 @@
 
       <div class="form-group">
         <label for="">Phone Number</label>
-        <input type="tel" required #empPhone="ngModel" class="form-control" name="empPhone" [(ngModel)]="appFormModel.empPhone" />
+        <input type="text" required #empPhone="ngModel" class="form-control" name="empPhone" [(ngModel)]="appFormModel.empPhone" />
       </div>
       {{empPhone.valid}}
 
@@ -264,7 +264,7 @@
 
       <div class="form-group">
         <label for="">If so, what Union Number?</label>
-        <input type="number" required #prevNumber="ngModel" class="form-control" name="prevNumber" [(ngModel)]="appFormModel.prevNumber" />
+        <input type="text" required #prevNumber="ngModel" class="form-control" name="prevNumber" [(ngModel)]="appFormModel.prevNumber" />
       </div>
       {{prevNumber.valid}}
       <button class="center" type="submit">Submit</button>
